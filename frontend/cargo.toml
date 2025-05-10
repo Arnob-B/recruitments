@@ -1,0 +1,20 @@
+[package]
+name = "recruitment-frontend"
+version = "0.1.0"
+edition = "2025"
+author = "yequalsmxplusc"
+
+[dependencies]
+yew = { version = "0.20", features = ["csr"] }
+serde = { version = "1.0", features = ["derive"] }
+gloo-net = "0.2"
+wasm-bindgen-futures = "0.4"
+yew-router = "0.17"
+web-sys = { version = "0.3", features = [
+    "Window", 
+    "HtmlInputElement", 
+    "Storage",
+    "console"
+] }
+uuid = { version = "1.0", features = ["v4", "wasm-bindgen"] }
+gloo-storage = "0.2"
