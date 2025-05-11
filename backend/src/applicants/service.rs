@@ -49,8 +49,8 @@ pub async fn update_applicant(
     data: web::Data<AppState>,
 ) -> impl Responder {
     let mut applicants = data.applicants.lock().unwrap();
-    
-    if let Some(index) = applicants.iter().position(|a| &a.id == id.into_inner()) {
+    let id = id.into_inner(); // move happens here, outside closure
+    if let Some(index) = applicants.iter().position(|a| a.id == id) {
         applicants[index] = updated.into_inner();
         if let Err(e) = save_applicants(&*applicants).await {
             return HttpResponse::InternalServerError().json(e.to_string());
